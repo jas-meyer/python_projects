@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  {% load static %}
+  <link rel="stylesheet" href="{% static 'exam/css/leftright.css' %}" media="screen" title="no title"  charset="utf-8">
+	<title>Books Home</title>
+</head>
+<body>
+<h1>Welcome, {{request.session.alias}}! <a href = "/books/add">Add Book and Review</a>  <a href = "/logout">Logout</a></h1>
+<div id = "left">
+<h2> Recent Book Reviews:</h2>
+{%for review in reviews%}
+{%for book in books%}
+{%if review.book_id == book.id%}
+<h1><a href = "/books/{{book.id}}">{{book.title}}</a></h1>
+{% endif %}
+{% endfor %}
+<h2>Rating:{{review.rating}}</h2>
+{%for user in users%}
+{% if review.user_id == user.id%}
+<h3><a href = "/users/{{user.id}}">{{user.alias}}</a> says {{review.text}}</h3>
+<h3>Posted on {{review.created_at}}</h3>
+{% endif %}
+{% endfor %}
+
+
+
+{% endfor %}
+</div>
+<div id = "right">
+<h2> Other Books with Reviews </h2>
+	{%for book in books2%}
+	<h3><a href = "/books/{{book.id}}">{{book.title}}</a></h3>
+	{% endfor %}
+</div>	
+</body>
+</html>

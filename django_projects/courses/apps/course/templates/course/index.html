@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a student</title>
+</head>
+<body>
+<h1>Add a new course</h1>
+{% if messages %}
+        <ul>
+        {% for message in messages %}
+        <li> {{message}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+<form action = "/process" method = "post">
+	{% csrf_token %}
+<h2> Name: <input type = "text" name= "name"></h2>
+<h2> Description: <textarea name = "des"></textarea></h2>
+<input type ='submit' value ='Add'>
+</form>
+<h1> Courses</h1>
+
+<table>
+	<tr>
+		<th> Course Name </th>
+		<th> Description </th>
+		<th> Date Added </th>
+		<th> Actions </th>
+	</tr>
+	{% for course in courses%}
+		<tr>
+			<td> {{course.name}} </td>
+			<td> {{course.description}} </td>
+			<td> {{course.created_at}} </td>
+			<td><a href = "/courses/destroy/{{course.id}}">Remove</a><td>
+		</tr>
+	{% endfor %}
+</body>
+</html>

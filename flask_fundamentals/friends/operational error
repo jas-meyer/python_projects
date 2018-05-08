@@ -1,0 +1,9 @@
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'rot'@'localhost' (using password: YES)") (Background on this error at: http://sqlalche.me/e/e3q8) 
+You need to input the correct user name
+
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)") (Background on this error at: http://sqlalche.me/e/e3q8) 
+You need to use correct password
+
+
+
+

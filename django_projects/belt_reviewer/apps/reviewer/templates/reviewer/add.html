@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+</head>
+<body>
+<h3> Home Logout </h3>
+<h2> Add a New Book Title and a Review:</h2>
+<form action ='/process3' method = 'post'>
+	{% csrf_token %}
+<h2> Book Title: <input type = "text" name = "title"></h2>
+<h2> Author: </h2>
+
+<h2> Choose from the list: <select name = "author">
+								{% for author in authors %}
+								<option value ="author">{{author.name}}</option>
+								{% endfor %}
+						   </select></h2>
+
+<h2> Or add a new author: <input type = "text" name = "author"></h2>
+
+<h2> Review: <textarea name = "review">
+				</textarea></h2>
+<h2> Rating: <select name ="rating">
+				<option value = "5">5</option> 
+				<option value = "4">4</option> 
+				<option value = "3">3</option> 
+				<option value = "2">2</option> 
+				<option value = "1">1</option>
+			 </select> stars. </h2>
+<input type ='submit' value='Add Book and Review' name= "add" id = "add">
+      </form>
+
+</body>
+</html>

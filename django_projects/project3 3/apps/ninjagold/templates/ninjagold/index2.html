@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 {% load static %}
+	<link rel="stylesheet" href="{% static 'ninjagold/css/ninjagold.css' %}" media="screen" title="no title"  charset="utf-8">
+	<title>Ninja Gold</title>
+</head>
+<body>
+	<div id = "wrapper">
+		<div id = "yourgold">
+			<h3> Your Gold:</h3>
+			<div id = "total">
+				<p>{{request.session.total}}  </p>
+			</div>
+		</div>
+	
+	
+<div class = "buildings">	
+	<h2> Farm </h2>
+	<h3>(earns 10 - 20 golds)</h3>
+<form action='ninjagold/process', method = 'post'>
+	{% csrf_token %}
+	<input type = "hidden" name="building" value ="farm">
+	<input type = "submit" value = 'Find Gold!' id ="farm" name="farm">
+</form>	
+</div>
+<div class = "buildings">
+	<h2> Cave </h2>
+	<h3>(earns 5 - 10 golds)</h3>	
+<form action='ninjagold/process', method = 'post'>
+	{% csrf_token %}
+	
+	<input type = "hidden" name="building" value ="cave">
+	<input type = "submit" value = 'Find Gold!' id = "cave" name = "cave">
+</form>	
+</div>
+<div class = "buildings">
+	<h2> House </h2>
+	<h3>(earns 2 - 5 golds)</h3>	
+<form action='ninjagold/process', method = 'post'>
+	{% csrf_token %}
+	<input type = "hidden" name="building" value ="house">
+	<input type = "submit" value = 'Find Gold!' id ="house" name = "house" >
+</form>	
+</div>
+<div class = "buildings">
+	<h2> Casino </h2>
+	<h3>(earns/takes 0 - 50 golds)</h3>	
+<form action='ninjagold/process', method = 'post'>
+	{% csrf_token %}
+	<input type = "hidden" name="building" value ="casino">
+	<input type = "submit" value = 'Find Gold!' id = "casino" name = "casino">
+</form>	
+</div>
+<form action='ninjagold/reset', method = 'post'>
+	{% csrf_token %}
+<input type = "submit" value = 'Restart' id ="reset" name = "reset">
+</form>	
+<h4>Activities:</h4>
+<div id = "log">
+	{% for x in request.session.statementlist%}
+			{% if x.color == 0%}
+			<h4 id = "red">{{x.statement}}</h4> 
+			
+			{%elif x.color == 1%}
+			<h4 id = "green">{{x.statement}}</h4> 
+			
+		
+
+			{% endif %}
+
+			{% endfor %} 
+	
+	
+
+</div>
+	
+
+</div>
+</body>
+</html>

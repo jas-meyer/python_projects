@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wall</title>
+</head>
+<body>
+<h5><a href = "/logout">Logout</a>
+<h1> CodingDojo Wall</h1>
+
+<h2> Post a message </h2>
+
+
+<form action='/message' method= 'post' id = "messaging" name = "messaging">
+<textarea name = "message">
+
+</textarea>
+<input type ='submit' value = 'Post a message'>
+</form>
+{% for message in allmessage %}	
+<h3>{{message['name']}} {{message['created_at']}}</h3>
+<p>{{message['message']}}
+	{% for comment in allcomment %}	
+	{% if message['messy'] == comment['messy2']%}
+<h3>{{comment['name']}} 
+
+	{{comment['commentcreate']}}
+
+</h3>
+<p>{{comment['comm']}}
+	{% endif %}
+	{% endfor %}
+	
+<h3> <form action="/comment/{{message['messy']}}" method= 'post' id ="commenting" name = "commenting">
+<textarea name = "comment" >
+
+</textarea>
+<input type ='submit' value = 'Post a comment'></h3>
+</form>
+
+ {% endfor %}
+
+ 
+</body>
+</html>

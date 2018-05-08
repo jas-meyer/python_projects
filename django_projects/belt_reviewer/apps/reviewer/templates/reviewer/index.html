@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% load static %}
+  <link rel="stylesheet" href="{% static 'exam/css/index.css' %}" media="screen" title="no title"  charset="utf-8">
+
+
+       <title>Registration</title>
+    </head>
+    <body>
+    <h1>Registration</h1>
+    <div id = "theform">
+    	<h1>Submit Your Information</h1>
+    	{% if messages %}
+        <ul>
+        {% for message in messages %}
+        <li> {{message}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form action='/process' method='post'>
+      	{% csrf_token %}
+      	
+      	<h3>Name: <input type='text' name='name'></h3>
+        <h3>Alias: <input type='text' name='alias'></h3>
+        <h3>Email: <input type='text' name='email'></h3>
+        <h3>Password <input type='password' name='password'></h3>
+        <h3>Confirm Password <input type='password' name='confirm'>
+        </h3>
+    
+		<input type ='submit' value='Register' name= "register" id = "register"></h3>
+      </form>
+    
+    <form action='/process2' method='post'>
+      {% csrf_token %}
+    <h1>Login</h1>
+    <h3>Email: <input type='text' name='logemail'></h3>
+    <h3>Password <input type='password' name='logpassword'></h3>
+    <input type ='submit' value='Login' name = >
+      </form>
+
+
+		</div>
+
+	</form>
+</body>
+</html>

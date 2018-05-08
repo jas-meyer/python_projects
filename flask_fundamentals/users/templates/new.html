@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+       <title>Users New</title>
+    </head>
+    <body>
+    <h1>Add a new user</h1>
+    <div id = "theform">
+    	<h1>Submit Your Information</h1>
+    	{% with messages = get_flashed_messages() %}
+    		{% if messages %}
+    			{% for message in messages %}
+    				<p>{{message}}</p>
+    			{% endfor %}
+    		{% endif %}
+    	{% endwith %}
+      <form action='/users/create' method='post'>
+      	<h3>First Name:</h3> <input type='text' name='firstname'>
+        <h3>Last Name:</h3> <input type='text' name='lastname'>
+      	<h3>Email:</h3> <input type='text' name='email'>
+      	
+        
+    
+		<input type ='submit' value='Create'></h3>
+
+		</div>
+
+	</form>
+  <a href = "/users">Go Back</a>
+</body>
+</html>

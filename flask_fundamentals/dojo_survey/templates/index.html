@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css') }}">
+
+       <title>Submit the Form</title>
+    </head>
+    <body>
+    <div id = "theform">
+      <form action='/process' method='post'>
+      	<h1>Submit Your Information</h1>
+          <h3>Name: <input type='text' name='name'></h3>
+      
+		<h3>Dojo Location:<select name = "location">
+			<option value = "San Jose">San Jose</option>
+			<option value = "Dallas">Dallas</option>
+			<option value = "Uranus">Uranus</option>
+		</select></h3>
+
+		 <h3>Favorite Language: <select name ="language">
+			<option value = "Python">Python</option>
+			<option value = "Javascript">JavaScript</option>
+			<option value = "English">English</option>
+		</select></h3>
+		<h3>Comment(optional:)
+		<textarea rows = "8" cols = "50" name="textbox">
+			
+		</textarea>
+		<input type ='submit' value='Submit!'></h3>
+		</div>
+
+	</form>
+</body>
+</html>

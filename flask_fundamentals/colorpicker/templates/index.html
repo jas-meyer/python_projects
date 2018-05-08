@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css') }}">
+
+       <title>Color Picker</title>
+    </head>
+    <body>
+    <div id = "theform" style="background-color:rgb({{red}},{{green}},{{blue}});">
+      <h1>Enter your color values below</h1>
+      <form action='/process' method='post'>
+      	
+          <h3>Red: <input type='text' value = '0' name='red'></h3>
+          <h3>Green: <input type='text' value = '0' name='green'></h3>
+          <h3>Blue: <input type='text' value = '0' name='blue'></h3>
+      
+		
+		<input type ='submit' value='Submit!'></h3>
+		</div>
+
+	</form>
+</body>
+</html>

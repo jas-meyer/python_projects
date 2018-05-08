@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Appointments</title>
+</head>
+<body>
+<h1> Hello, {{request.session.firstname}}!</h1>
+<h3> Here are your appointments for today </h3>
+<table>
+	<tr>
+		<th> Tasks </th>
+		<th> Time </th>
+		<th> Status </th>
+		<th> Action </th>
+	</tr>
+
+	<tr>
+</table>
+<h3> Your Other appointments:</h3>
+<table>
+	<tr>
+		<th> Tasks </th>
+		<th> Date </th>
+		<th> Time </th>
+	</tr>
+
+</table>
+<form action = 'appointments/add' method = 'post'>
+	     {% csrf_token %}
+<h1> Add Appointment </h1>
+<h4> Date: <input type = "text" name= "date"></h4>
+<h4> Time: <input type = "time" name = "tm"></h4>
+<h4> Tasks: <input type = "text" name = "tasks"></h4>
+<input type ='submit' value = 'Add' name = "add">
+</form>
+
+
+
+	
+</body>
+</html>

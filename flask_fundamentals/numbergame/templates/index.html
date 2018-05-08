@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_style_sheet.css') }}">
+	<title></title>
+</head>
+<body>
+	<h1> Welcome to the Great Number Game! </h1>
+	<p> I am thinking of a number between 1 and 100</p>
+	<p> Take a guess! </p>
+
+	<p> {{state}} </p>
+	{% if state == "Too Low" or state == "Too High" or state == ""%}
+<form action='/process', method = 'post'>
+	<input type = 'text' name = 'guess'>
+	<input type = "submit" value = 'Guess!'>
+	{% endif %}
+	{% if state == "Right On"%}
+<form action='/reset', method = 'post'>
+<input type = "submit" value = 'reset!'>
+	{% endif%}
+</form>
+
+</body>
+</html>

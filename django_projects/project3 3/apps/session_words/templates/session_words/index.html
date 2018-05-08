@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Words</title>
+	 {% load static %}
+	 <link rel="stylesheet" href="{% static 'session_words/css/session_words.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+<div id = "wrapper">
+	<div id = "left">
+<form action="/session_words/add_word" method = "post">	
+	{% csrf_token %}
+<h1> Add a new word</h1>
+<input type="text" name="word">
+<h3> Choose color </h3>
+ <h3><input type="radio" name="color" value="red"> Red </h3>
+ <h3><input type="radio" name="color" value="green"> Green </h3>
+ <h3><input type="radio" name="color" value="blue"> Blue </h3>
+ <input type='hidden' value='0' name='bold'>
+ <h3> <input type = "checkbox" name = "bold" value = "1">show in Big fonts!</h3>
+ 
+<input type ="submit" id = "add" name = "add" value = "Add to Session">
+</div>
+</form>
+<div id ="right">
+<form action="/session_words/clear" method = "post">	
+	{% csrf_token %}
+<input type ="submit" id = "clear" name = "clear" value = "Clear Session">
+</form>	
+				
+			{% for x in request.session.words%}
+			{% if x.color == 0 and x.big == 0%}
+			<h4 id = "red">{{x.word}}</h4> <h5> - added on {{x.date}} </h5><br>
+			
+			{%elif x.color == 0 and x.big == 1%} 
+			<h2 id = "red">{{x.word}}</h2> <h5> - added on {{x.date}} </h5><br>
+			
+			{%elif x.color == 1 and x.big == 0%}
+			<h4 id = "green">{{x.word}}</h4> <h5> - added on {{x.date}} </h5><br>
+			
+			{%elif x.color == 1 and x.big == 1%} 
+			<h2 id = "green">{{x.word}}</h2> <h5> - added on {{x.date}} </h5><br>
+
+			{%elif x.color == 2 and  x.big == 0%} 
+			<h4 id = "blue">{{x.word}}</h4> <h5> - added on {{x.date}} </h5><br>
+
+			{%elif x.color == 2 and  x.big == 1%} 
+			<h2 id = "blue">{{x.word}}</h2> <h5> - added on {{x.date}} </h5><br>
+			
+
+
+
+			{% endif %}
+	
+			
+			{% endfor %} 
+
+	
+</div>	
+</div>
+</body>
+</html>

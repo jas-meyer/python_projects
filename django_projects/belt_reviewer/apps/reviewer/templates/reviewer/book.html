@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book and add Review</title>
+</head>
+<body>
+	<h2> Home  Logout</h2>
+	<div id = "left">
+		
+	<h1> {{book.title}}</h1>	
+		{% for author in authors %}
+		
+		
+	
+		{% if book.author_id == author.id %}
+	<h2> Author: {{author.name}} </h2>
+		{% endif %}
+		{% endfor %}
+	<h1> Reviews: </h1>
+		{% for review in reviews %}
+		{% if review.book_id == book.id%}
+	<h2> Rating: {{review.rating}} </h2>
+		{% endif %}
+		{% for user in users %}
+		{% if review.book_id == book.id%}
+		{% if user.id == review.user_id %}
+	<h2> <a href = "/users/{{user.id}}">{{user.alias}}</a> says {{review.text}} </h2>
+	<h2> Posted on {{review.created_at}} </h2>
+		
+
+		
+		{% if review.user_id == request.session.id%}
+	<h3><a href = "/delete/{{review.id}}">Delete</a> </h3>
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		{% endfor %}
+		
+	</div>
+	<div id = "right">
+		<h2> Add a review: </h2>
+		<form action ='/process4/{{book.id}}' method = 'post'>
+			{% csrf_token %}
+		<textarea name = "text"></textarea>
+		<h2> Rating: <select name ="rating">
+				<option value = "5">5</option> 
+				<option value = "4">4</option> 
+				<option value = "3">3</option> 
+				<option value = "2">2</option> 
+				<option value = "1">1</option>
+			 </select> stars. </h2>
+			 <input type ='submit' value='Submit Review' name= "add" id = "add">
+      </form>
+</body>
+</html>
